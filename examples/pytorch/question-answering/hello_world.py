@@ -29,6 +29,7 @@ model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
 text = "Replace me by any text you'd like."
 encoded_input = tokenizer(text, return_tensors='pt')
 output = model(**encoded_input)
+print(output)
 
 def main(args):
     print('===== H E L L O   W O R L D =====')
