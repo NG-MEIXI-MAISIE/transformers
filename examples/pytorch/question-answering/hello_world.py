@@ -16,9 +16,19 @@ import os
 import sacremoses
 import transformers
 
+import torch  
+from transformers import pipeline, set_seed
+from transformers import BioGptTokenizer, BioGptForCausalLM
+
+
 print(transformers.__version__)
 print(sacremoses.__version__)
 
+tokenizer = BioGptTokenizer.from_pretrained("microsoft/biogpt")
+model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
+text = "Replace me by any text you'd like."
+encoded_input = tokenizer(text, return_tensors='pt')
+output = model(**encoded_input)
 
 def main(args):
     print('===== H E L L O   W O R L D =====')
@@ -30,6 +40,14 @@ def main(args):
     print(f'model_dir = {args.model_dir}')
     print(f'train_file = {args.train_file}')
     print()
+
+
+
+
+
+
+
+    
 
     print('----- Train File -----')
     train_file = args.train_file
