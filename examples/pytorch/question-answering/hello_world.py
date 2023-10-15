@@ -15,6 +15,7 @@ import json
 import os
 import sacremoses
 import transformers
+import pandas
 
 import torch  
 from transformers import pipeline, set_seed
@@ -56,6 +57,9 @@ def main(args):
             data = json.load(f)
             
             print(json.dumps(data, indent=2))
+    elif train_file.endswith('.csv'):
+        df = pd.read_csv(train_file)
+        print(df.head(3))
 
     print('----- End of Train File -----')
 
