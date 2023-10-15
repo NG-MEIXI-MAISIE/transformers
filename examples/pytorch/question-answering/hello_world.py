@@ -60,7 +60,7 @@ def main(args):
     ds['train'] = df
 
     def preprocess_function(examples):
-    return tokenizer([" ".join(x) for x in examples["abstract"]])
+        return tokenizer([" ".join(x) for x in examples["abstract"]])
 
     tokenized_ds = ds.map(preprocess_function,
                           batched=True,
