@@ -61,16 +61,16 @@ def main(args):
     ds = DatasetDict()
     ds['train'] = df
 
-    # def preprocess_function(examples):
-    #     return tokenizer([" ".join(x) for x in examples["abstract"]])
+    def preprocess_function(examples):
+        return tokenizer([" ".join(x) for x in examples["abstract"]])
 
-    # tokenized_ds = ds.map(preprocess_function,
-    #                       batched=True,
-    #                       num_proc=4
-    #                       # remove_columns=ds["train"].column_names
-    #                      )
+    tokenized_ds = ds.map(preprocess_function,
+                          batched=True,
+                          num_proc=4
+                          # remove_columns=ds["train"].column_names
+                         )
 
-    print(ds)
+    print(tokenized_ds)
 
     
 
