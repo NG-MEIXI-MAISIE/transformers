@@ -51,7 +51,7 @@ def main(args):
     
 
     print('----- Train File -----')
-    # train_file = args.train_file
+    train_file = args.train_file
     # if train_file.endswith('.json'):
     #     with open(train_file, 'r') as f:
     #         data = json.load(f)
