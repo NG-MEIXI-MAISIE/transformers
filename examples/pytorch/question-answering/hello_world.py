@@ -68,7 +68,7 @@ def main(args):
 
     tokenized_ds = ds.map(preprocess_function,
                           batched=True,
-                          num_proc=4
+                          num_proc=4,
                           remove_columns=ds["train"].column_names
                          )
 
