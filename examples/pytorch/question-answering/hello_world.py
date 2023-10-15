@@ -16,10 +16,12 @@ import os
 import sacremoses
 import transformers
 import pandas as pd
+import datasets
 
 import torch  
 from transformers import pipeline, set_seed
 from transformers import BioGptTokenizer, BioGptForCausalLM
+from datasets import Dataset, DatasetDict
 
 
 print(transformers.__version__)
@@ -42,14 +44,6 @@ def main(args):
     print(f'train_file = {args.train_file}')
     print()
 
-
-
-
-
-
-
-    
-
     print('----- Train File -----')
     train_file = args.train_file
     # if train_file.endswith('.json'):
@@ -58,8 +52,30 @@ def main(args):
             
             # print(json.dumps(data, indent=2))
     if train_file.endswith('.csv'):
-        df = pd.read_csv(train_file)
-        print(df.head(3))
+        print("CSV")
+
+    df = pd.read_csv(train_file)
+    # transform to Dataset format:
+    ds = DatasetDict()
+    ds['train'] = df
+
+    def preprocess_function(examples):
+    return tokenizer([" ".join(x) for x in examples["abstract"]])
+
+    tokenized_ds = ds.map(preprocess_function,
+                          batched=True,
+                          num_proc=4
+                          # remove_columns=ds["train"].column_names
+                         )
+
+    print(tokenized_ds)
+
+    
+
+    
+        
+
+    
 
     print('----- End of Train File -----')
 
