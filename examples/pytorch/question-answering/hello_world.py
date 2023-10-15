@@ -27,11 +27,6 @@ from datasets import Dataset, DatasetDict
 print(transformers.__version__)
 print(sacremoses.__version__)
 
-tokenizer = BioGptTokenizer.from_pretrained("microsoft/biogpt")
-model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
-generator = pipeline('text-generation', model=model, tokenizer=tokenizer)
-set_seed(42)
-print(generator("COVID-19 is", max_length=20, num_return_sequences=5, do_sample=True))
 
 def main(args):
     print('===== H E L L O   W O R L D =====')
@@ -53,6 +48,13 @@ def main(args):
             # print(json.dumps(data, indent=2))
     if train_file.endswith('.csv'):
         print("CSV")
+
+    tokenizer = BioGptTokenizer.from_pretrained("microsoft/biogpt")
+    model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
+    generator = pipeline('text-generation', model=model, tokenizer=tokenizer)
+    set_seed(42)
+    print(generator("COVID-19 is", max_length=20, num_return_sequences=5, do_sample=True))
+
 
     df = pd.read_csv(train_file)
     # transform to Dataset format:
