@@ -58,8 +58,10 @@ def main(args):
 
     df = pd.read_csv(train_file)
     # transform to Dataset format:
+    tds = Dataset.from_pandas(df)
+    
     ds = DatasetDict()
-    ds['train'] = df
+    ds['train'] = tds
 
     def preprocess_function(examples):
         return tokenizer([" ".join(x) for x in examples["abstract"]])
@@ -67,7 +69,7 @@ def main(args):
     tokenized_ds = ds.map(preprocess_function,
                           batched=True,
                           num_proc=4
-                          # remove_columns=ds["train"].column_names
+                          remove_columns=ds["train"].column_names
                          )
 
     print(tokenized_ds)
