@@ -51,13 +51,13 @@ def main(args):
     
 
     print('----- Train File -----')
-    train_file = args.train_file
-    if train_file.endswith('.json'):
-        with open(train_file, 'r') as f:
-            data = json.load(f)
+    # train_file = args.train_file
+    # if train_file.endswith('.json'):
+    #     with open(train_file, 'r') as f:
+    #         data = json.load(f)
             
-            print(json.dumps(data, indent=2))
-    elif train_file.endswith('.csv'):
+            # print(json.dumps(data, indent=2))
+    if train_file.endswith('.csv'):
         df = pd.read_csv(train_file)
         print(df.head(3))
 
