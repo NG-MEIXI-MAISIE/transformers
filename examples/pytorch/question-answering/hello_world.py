@@ -15,7 +15,7 @@ import json
 import os
 import sacremoses
 import transformers
-import pandas
+import pandas as pd
 
 import torch  
 from transformers import pipeline, set_seed
