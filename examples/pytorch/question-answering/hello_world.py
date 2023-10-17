@@ -22,6 +22,8 @@ import torch
 from transformers import pipeline, set_seed
 from transformers import BioGptTokenizer, BioGptForCausalLM
 from datasets import Dataset, DatasetDict
+from transformers import DataCollatorForLanguageModeling
+from transformers import Trainer, TrainingArguments
 
 
 print(transformers.__version__)
@@ -63,6 +65,7 @@ def main(args):
     ds = DatasetDict()
     ds['train'] = tds
 
+
     def preprocess_function(examples):
         return tokenizer([" ".join(x) for x in examples["abstract"]])
 
@@ -92,7 +95,37 @@ def main(args):
         return result
 
     lm_dataset = tokenized_ds.map(group_texts, batched=True, num_proc=4)
+    
     print(lm_dataset)
+    print(tokenizer.decode(lm_datasets["train"][1]["input_ids"]))
+
+    # Use the end-of-sequence token as the padding token and set mlm=False. This will use the inputs as labels shifted to the right by one element:
+
+    tokenizer.pad_token = tokenizer.eos_token
+    data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
+
+    # Train the model 
+    model_name = model_checkpoint.split("/")[-1]
+    training_args = TrainingArguments(
+        f"{model_name}-finetuned-wikitext2",
+        evaluation_strategy = "epoch",
+        learning_rate=2e-5,
+        weight_decay=0.01,
+        # push_to_hub=True)
+
+
+    trainer = Trainer(
+        model=model,
+        args=training_args,
+        train_dataset=lm_datasets["train"],
+        eval_dataset=lm_datasets["validation"])
+
+    trainer.train()
+
+    import math
+    eval_results = trainer.evaluate()
+    print(f"Perplexity: {math.exp(eval_results['eval_loss']):.2f}")
+
 
 
 
