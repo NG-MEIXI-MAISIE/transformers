@@ -104,10 +104,14 @@ def main(args):
     tokenizer.pad_token = tokenizer.eos_token
     data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
 
+
+    
+
     # Train the model 
-    model_name = model.split("/")[-1]
+    #model_name = model.split("/")[-1]
     training_args = TrainingArguments(
-        f"{model_name}-finetuned-GUSTO",
+        # f"{model_name}-finetuned-GUSTO",
+        output_dir="BioGPT-finetuned-GUSTO",
         evaluation_strategy = "epoch",
         learning_rate=2e-5,
         weight_decay=0.01,)
