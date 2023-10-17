@@ -61,9 +61,13 @@ def main(args):
     df = pd.read_csv(train_file)
     # transform to Dataset format:
     tds = Dataset.from_pandas(df)
-    
-    ds = DatasetDict()
-    ds['train'] = tds
+
+    # create train and test data manually 
+    #ds = DatasetDict()
+    #ds['train'] = tds
+
+    #split input file into test and train datasets
+    ds = tds.train_test_split(test_size=0.2)
 
 
     def preprocess_function(examples):
