@@ -97,7 +97,7 @@ def main(args):
     lm_dataset = tokenized_ds.map(group_texts, batched=True, num_proc=4)
     
     print(lm_dataset)
-    print(tokenizer.decode(lm_datasets["train"][1]["input_ids"]))
+    print(tokenizer.decode(lm_dataset["train"][1]["input_ids"]))
 
     # Use the end-of-sequence token as the padding token and set mlm=False. This will use the inputs as labels shifted to the right by one element:
 
@@ -117,8 +117,8 @@ def main(args):
     trainer = Trainer(
         model=model,
         args=training_args,
-        train_dataset=lm_datasets["train"],
-        eval_dataset=lm_datasets["validation"])
+        train_dataset=lm_dataset["train"],
+        eval_dataset=lm_dataset["validation"])
         
     trainer.train()
 
