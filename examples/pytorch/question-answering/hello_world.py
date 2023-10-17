@@ -126,7 +126,8 @@ def main(args):
         model=model,
         args=training_args,
         train_dataset=lm_dataset["train"],
-        eval_dataset=lm_dataset["validation"])
+        eval_dataset=lm_dataset["test"]), 
+        data_collator = data_collator,)
         
     trainer.train()
 
