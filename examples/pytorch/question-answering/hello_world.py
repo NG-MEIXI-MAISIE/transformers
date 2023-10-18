@@ -119,7 +119,7 @@ def main(args):
         evaluation_strategy = "epoch",
         learning_rate=2e-5,
         weight_decay=0.01,)
-        # push_to_hub=True)
+        push_to_hub=True)
 
 
     trainer = Trainer(
@@ -134,6 +134,7 @@ def main(args):
     import math
     eval_results = trainer.evaluate()
     print(f"Perplexity: {math.exp(eval_results['eval_loss']):.2f}")
+    print(eval_results)
 
 
 
