@@ -118,7 +118,7 @@ def main(args):
         output_dir="BioGPT-finetuned-GUSTO",
         evaluation_strategy = "epoch",
         learning_rate=2e-5,
-        weight_decay=0.01,)
+        weight_decay=0.01,
         push_to_hub=True)
 
 
