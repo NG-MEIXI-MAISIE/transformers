@@ -130,12 +130,15 @@ def main(args):
         data_collator = data_collator,)
         
     trainer.train()
-    trainer.save_model()
+    trainer.save_model("./my_model")
+    
 
     import math
     eval_results = trainer.evaluate()
     print(f"Perplexity: {math.exp(eval_results['eval_loss']):.2f}")
     print(eval_results)
+
+    output_data_dir
 
 
 
