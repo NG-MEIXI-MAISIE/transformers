@@ -115,7 +115,7 @@ def main(args):
     #model_name = model.split("/")[-1]
     training_args = TrainingArguments(
         # f"{model_name}-finetuned-GUSTO",
-        output_dir="BioGPT-finetuned-GUSTO",
+        output_dir="./BioGPT-finetuned-GUSTO",
         evaluation_strategy = "epoch",
         learning_rate=2e-5,
         weight_decay=0.01)
@@ -138,7 +138,9 @@ def main(args):
     print(f"Perplexity: {math.exp(eval_results['eval_loss']):.2f}")
     print(eval_results)
 
-    output_data_dir
+    trainer.push_to_hub()
+
+    
 
 
 
