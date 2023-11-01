@@ -179,7 +179,7 @@ if __name__ == '__main__':
     parser.add_argument('--output_dir', type=str, default=os.environ['SM_HP_OUTPUT_DIR'])
     parser.add_argument('--train_file', type=str, default=os.environ['SM_CHANNEL_TRAIN'])
     # parser.add_argument('--test_file', type=str, default=os.environ['SM_CHANNEL_TEST'])
-    parser.add_argument('--huggingface_token', type=str, default=os.environ['HUGGINGFACE_TOKEN'])
+    parser.add_argument('--huggingface_token', type=str, default=os.environ['SM_HP_HUGGINGFACE_TOKEN'])
     args, _ = parser.parse_known_args()
     HfFolder.save_token(args.huggingface_token)
 
