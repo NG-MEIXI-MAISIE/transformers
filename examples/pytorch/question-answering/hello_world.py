@@ -24,6 +24,9 @@ from transformers import BioGptTokenizer, BioGptForCausalLM
 from datasets import Dataset, DatasetDict
 from transformers import DataCollatorForLanguageModeling
 from transformers import Trainer, TrainingArguments
+from huggingface_hub.hf_api import HfFolder
+
+
 
 
 print(transformers.__version__)
@@ -175,7 +178,9 @@ if __name__ == '__main__':
     parser.add_argument('--output_dir', type=str, default=os.environ['SM_HP_OUTPUT_DIR'])
     parser.add_argument('--train_file', type=str, default=os.environ['SM_CHANNEL_TRAIN'])
     # parser.add_argument('--test_file', type=str, default=os.environ['SM_CHANNEL_TEST'])
+    parser.add_argument('--huggingface_token', type=str, default=os.environ['HUGGINGFACE_TOKEN'])
     args, _ = parser.parse_known_args()
+    HfFolder.save_token(args.huggingface_token)
 
     main(args)
 
