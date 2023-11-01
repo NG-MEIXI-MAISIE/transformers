@@ -42,7 +42,8 @@ def main(args):
     print(f'output_data_dir = {args.output_data_dir}')
     print(f'model_dir = {args.model_dir}')
     print(f'train_file = {args.train_file}')
-    print()
+    
+    print(args.huggingface_token)
 
     print('----- Train File -----')
     train_file = args.train_file
