@@ -144,7 +144,7 @@ def main(args):
     print(eval_results)
 
     #trainer.push_to_hub()
-    trainer.model.push_to_hub()
+    trainer.model.push_to_hub("my-finetuned-biogpt")
 
 
     
