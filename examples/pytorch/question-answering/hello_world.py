@@ -121,10 +121,11 @@ def main(args):
         # f"{model_name}-finetuned-GUSTO",
         # output_dir="./BioGPT-finetuned-GUSTO",
         output_dir = "./output",
-        #evaluation_strategy = "epoch",
-        evaluation_strategy = "no",
+        evaluation_strategy = "epoch",
+        #evaluation_strategy = "no",
         learning_rate=2e-5,
-        weight_decay=0.01, load_best_model_at_end=True)
+        weight_decay=0.01, )
+        #load_best_model_at_end=True)
         # push_to_hub=True)
 
 
@@ -138,8 +139,8 @@ def main(args):
     trainer.train()
     trainer.save_model("./my_model")
     tokenizer.save_pretrained("./my_model")
-    best_ckpt_path = trainer.state.best_model_checkpoint
-    print(best_ckpt_path)
+    #best_ckpt_path = trainer.state.best_model_checkpoint
+    #print(best_ckpt_path)
     #model_best = BioGptForCausalLM.from_pretrained(best_ckpt_path)
 
 
