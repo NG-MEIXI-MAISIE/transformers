@@ -136,6 +136,7 @@ def main(args):
         
     trainer.train()
     trainer.save_model("./my_model")
+    tokenizer.save_pretrained(output_dir,legacy_format=False)
     
 
     import math
