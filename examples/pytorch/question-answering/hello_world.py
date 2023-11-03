@@ -137,6 +137,11 @@ def main(args):
     trainer.train()
     trainer.save_model("./my_model")
     tokenizer.save_pretrained("./my_model")
+    best_ckpt_path = trainer.state.best_model_checkpoint
+    print(best_ckpt_path)
+    model_best = BioGptForCausalLM.from_pretrained(best_ckpt_path)
+
+
     
 
     import math
