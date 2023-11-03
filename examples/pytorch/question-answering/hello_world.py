@@ -121,7 +121,8 @@ def main(args):
         # f"{model_name}-finetuned-GUSTO",
         # output_dir="./BioGPT-finetuned-GUSTO",
         output_dir = "./output",
-        evaluation_strategy = "epoch",
+        #evaluation_strategy = "epoch",
+        evaluation_strategy = "no",
         learning_rate=2e-5,
         weight_decay=0.01, load_best_model_at_end=True)
         # push_to_hub=True)
