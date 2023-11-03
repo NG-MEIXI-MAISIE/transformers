@@ -130,13 +130,15 @@ def main(args):
     training_args = TrainingArguments(
         # f"{model_name}-finetuned-GUSTO",
         # output_dir="./BioGPT-finetuned-GUSTO",
-        output_dir = "./output",
+        #output_dir = "./output",
         evaluation_strategy = "epoch",
         #evaluation_strategy = "no",
         learning_rate=2e-5,
-        weight_decay=0.01, )
+        weight_decay=0.01,
+        output_dir = 'finetuned_model',
+        push_to_hub=True)
         #load_best_model_at_end=True)
-        # push_to_hub=True)
+    
 
 
     trainer = Trainer(
@@ -161,8 +163,8 @@ def main(args):
     print(f"Perplexity: {math.exp(eval_results['eval_loss']):.2f}")
     print(eval_results)
 
-    #trainer.push_to_hub()
-    trainer.model.push_to_hub("my-finetuned-biogpt")
+    trainer.push_to_hub()
+    #trainer.model.push_to_hub("my-finetuned-biogpt")
 
 
     
