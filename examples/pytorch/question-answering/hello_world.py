@@ -60,11 +60,11 @@ def main(args):
 
 
     
-    #tokenizer = BioGptTokenizer.from_pretrained("microsoft/biogpt")
-    tokenizer = BioGptTokenizer(
-    "tokenizer model/vocab.json",
-    "tokenizer model/merges.txt",
-)
+    tokenizer = BioGptTokenizer.from_pretrained("microsoft/biogpt")
+#     tokenizer = BioGptTokenizer(
+#     "tokenizer model/vocab.json",
+#     "tokenizer model/merges.txt",
+# )
     
     model = BioGptForCausalLM.from_pretrained("microsoft/biogpt")
     generator = pipeline('text-generation', model=model, tokenizer=tokenizer)
