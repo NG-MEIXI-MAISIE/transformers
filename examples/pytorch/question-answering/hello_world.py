@@ -153,6 +153,14 @@ def main(args):
     trainer.train()
     trainer.save_model("./my_model")
     tokenizer.save_pretrained("./my_model")
+
+
+    repo_name = "my-finetuned-biogpt"
+    model.push_to_hub(repo_name)
+    tokenizer.push_to_hub(repo_name)
+
+
+    
     #best_ckpt_path = trainer.state.best_model_checkpoint
     #print(best_ckpt_path)
     #model_best = BioGptForCausalLM.from_pretrained(best_ckpt_path)
