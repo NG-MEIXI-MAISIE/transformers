@@ -147,7 +147,7 @@ def main(args):
         args=training_args,
         train_dataset=lm_dataset["train"],
         eval_dataset=lm_dataset["test"], 
-        compute_metrics = compute_metrics,
+        #compute_metrics = compute_metrics,
         data_collator = data_collator,)
         
     trainer.train()
