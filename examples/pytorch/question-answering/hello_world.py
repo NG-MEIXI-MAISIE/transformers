@@ -133,6 +133,7 @@ def main(args):
         #output_dir = "./output",
         evaluation_strategy = "epoch",
         #evaluation_strategy = "no",
+        save_strategy = "epoch",
         learning_rate=2e-5,
         weight_decay=0.01,
         output_dir = 'finetuned_model',
@@ -146,6 +147,7 @@ def main(args):
         args=training_args,
         train_dataset=lm_dataset["train"],
         eval_dataset=lm_dataset["test"], 
+        compute_metrics = compute_metrics,
         data_collator = data_collator,)
         
     trainer.train()
@@ -163,7 +165,7 @@ def main(args):
     print(f"Perplexity: {math.exp(eval_results['eval_loss']):.2f}")
     print(eval_results)
 
-    trainer.push_to_hub()
+    trainer.push_to_hub("End of training")
     #trainer.model.push_to_hub("my-finetuned-biogpt")
 
 
