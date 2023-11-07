@@ -154,8 +154,8 @@ def main(args):
         tokenizer = tokenizer)
         
     trainer.train()
-    #trainer.save_model("./my_model")
-    #tokenizer.save_pretrained("./my_model")
+    trainer.save_model("./my_model")
+    tokenizer.save_pretrained("./my_model")
 
 
     #repo_name = "my-finetuned-biogpt"
