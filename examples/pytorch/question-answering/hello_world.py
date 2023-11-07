@@ -112,10 +112,11 @@ def main(args):
         result["labels"] = result["input_ids"].copy()
         return result
 
-    lm_dataset = tokenized_ds.map(group_texts, batched=True, num_proc=4)
+    #lm_dataset = tokenized_ds.map(group_texts, batched=True, num_proc=4)
+    lm_dataset = tokenized_ds
     
-    print(lm_dataset)
-    print(tokenizer.decode(lm_dataset["train"][1]["input_ids"]))
+    #print(lm_dataset)
+    #print(tokenizer.decode(lm_dataset["train"][1]["input_ids"]))
 
     # Use the end-of-sequence token as the padding token and set mlm=False. This will use the inputs as labels shifted to the right by one element:
 
@@ -154,8 +155,8 @@ def main(args):
         tokenizer = tokenizer)
         
     trainer.train()
-    trainer.save_model("./my_model")
-    tokenizer.save_pretrained("./my_model")
+    #trainer.save_model("./my_model")
+    #tokenizer.save_pretrained("./my_model")
 
 
     #repo_name = "my-finetuned-biogpt"
