@@ -140,7 +140,7 @@ def main(args):
         weight_decay=0.01,
         #output_dir = 'finetuned_model',
         push_to_hub=True, 
-        push_to_hub_model_id = "finetuned_model2")
+        push_to_hub_model_id = "finetuned_model3")
         #load_best_model_at_end=True)
     
 
@@ -160,7 +160,7 @@ def main(args):
 
 
     #repo_name = "my-finetuned-biogpt"
-    repo_name = "finetuned_model"
+    repo_name = "finetuned_model3"
     model.push_to_hub(repo_name)
     tokenizer.push_to_hub(repo_name)
 
