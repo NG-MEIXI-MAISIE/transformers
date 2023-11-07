@@ -128,7 +128,7 @@ def main(args):
     # Train the model 
     #model_name = model.split("/")[-1]
     training_args = TrainingArguments(
-        "finetuned_model2",
+        "finetuned_model3",
         # f"{model_name}-finetuned-GUSTO",
         # output_dir="./BioGPT-finetuned-GUSTO",
         #output_dir = "./output",
