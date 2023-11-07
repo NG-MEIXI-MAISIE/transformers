@@ -155,7 +155,8 @@ def main(args):
     tokenizer.save_pretrained("./my_model")
 
 
-    repo_name = "my-finetuned-biogpt"
+    #repo_name = "my-finetuned-biogpt"
+    repo_name = "finetuned_model"
     model.push_to_hub(repo_name)
     tokenizer.push_to_hub(repo_name)
 
