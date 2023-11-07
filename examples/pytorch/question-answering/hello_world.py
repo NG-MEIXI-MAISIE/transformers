@@ -128,6 +128,7 @@ def main(args):
     # Train the model 
     #model_name = model.split("/")[-1]
     training_args = TrainingArguments(
+        "finetuned_model2",
         # f"{model_name}-finetuned-GUSTO",
         # output_dir="./BioGPT-finetuned-GUSTO",
         #output_dir = "./output",
@@ -136,8 +137,9 @@ def main(args):
         save_strategy = "epoch",
         learning_rate=2e-5,
         weight_decay=0.01,
-        output_dir = 'finetuned_model',
-        push_to_hub=True)
+        #output_dir = 'finetuned_model',
+        push_to_hub=True, 
+        push_to_hub_model_id = "finetuned_model2")
         #load_best_model_at_end=True)
     
 
@@ -148,7 +150,8 @@ def main(args):
         train_dataset=lm_dataset["train"],
         eval_dataset=lm_dataset["test"], 
         #compute_metrics = compute_metrics,
-        data_collator = data_collator,)
+        data_collator = data_collator,
+        tokenizer = tokenizer)
         
     trainer.train()
     trainer.save_model("./my_model")
