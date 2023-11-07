@@ -112,8 +112,7 @@ def main(args):
         result["labels"] = result["input_ids"].copy()
         return result
 
-    #lm_dataset = tokenized_ds.map(group_texts, batched=True, num_proc=4)
-    lm_dataset = tokenized_ds
+    lm_dataset = tokenized_ds.map(group_texts, batched=True, num_proc=4)
     
     #print(lm_dataset)
     #print(tokenizer.decode(lm_dataset["train"][1]["input_ids"]))
