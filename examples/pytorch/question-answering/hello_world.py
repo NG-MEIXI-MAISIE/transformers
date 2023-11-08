@@ -178,8 +178,8 @@ def main(args):
     print(eval_results)
 
 
-    tokenizer = BioGptTokenizer.from_pretrained("MAISIENG/finetuned_model3")
-    model = BioGptForCausalLM.from_pretrained("MAISIENG/finetuned_model3")
+    tokenizer = BioGptTokenizer.from_pretrained("AMAISIENG/finetuned_model3")
+    model = BioGptForCausalLM.from_pretrained("AMAISIENG/finetuned_model3")
     text = "Replace me by any text you'd like."
     encoded_input = tokenizer(text, return_tensors='pt')
     output = model(**encoded_input)
