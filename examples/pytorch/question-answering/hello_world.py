@@ -177,6 +177,14 @@ def main(args):
     print(f"Perplexity: {math.exp(eval_results['eval_loss']):.2f}")
     print(eval_results)
 
+
+    tokenizer = BioGptTokenizer.from_pretrained("MAISIENG/finetuned_model3")
+    model = BioGptForCausalLM.from_pretrained("MAISIENG/finetuned_model3")
+    text = "Replace me by any text you'd like."
+    encoded_input = tokenizer(text, return_tensors='pt')
+    output = model(**encoded_input)
+    print(output)
+
     trainer.push_to_hub("End of training")
     #trainer.model.push_to_hub("my-finetuned-biogpt")
 
