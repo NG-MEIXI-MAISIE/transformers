@@ -180,10 +180,13 @@ def main(args):
 
     tokenizer = BioGptTokenizer.from_pretrained("AMAISIENG/finetuned_model3")
     model = BioGptForCausalLM.from_pretrained("AMAISIENG/finetuned_model3")
-    text = "Replace me by any text you'd like."
-    encoded_input = tokenizer(text, return_tensors='pt')
-    output = model(**encoded_input)
-    print(output)
+    generator = pipeline('text-generation', model=model, tokenizer=tokenizer)
+    set_seed(42)
+    print(generator("COVID-19 is", max_length=20, num_return_sequences=5, do_sample=True))
+
+
+
+    
 
     trainer.push_to_hub("End of training")
     #trainer.model.push_to_hub("my-finetuned-biogpt")
