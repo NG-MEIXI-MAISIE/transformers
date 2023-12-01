@@ -56,8 +56,9 @@ def main(args):
         print("CSV")
 
 
-    model = "tiiuae/falcon-40b"
-    tokenizer = AutoTokenizer.from_pretrained(model)
+    
+    tokenizer = AutoTokenizer.from_pretrained("tiiuae/falcon-40b")
+    model = AutoModel.from_pretrained("tiiuae/falcon-40b")
 
     df = pd.read_csv(train_file)
     # transform to Dataset format:
