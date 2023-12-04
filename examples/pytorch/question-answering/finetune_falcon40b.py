@@ -57,8 +57,8 @@ def main(args):
 
 
     
-    tokenizer = AutoTokenizer.from_pretrained("tiiuae/falcon-40b")
-    model = AutoModelForCausalLM.from_pretrained("tiiuae/falcon-40b")
+    tokenizer = AutoTokenizer.from_pretrained("tiiuae/falcon-40b", trust_remote_code=True)
+    model = AutoModelForCausalLM.from_pretrained("tiiuae/falcon-40b", trust_remote_code=True)
 
     df = pd.read_csv(train_file)
     # transform to Dataset format:
