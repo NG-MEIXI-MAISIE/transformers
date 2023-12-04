@@ -125,6 +125,7 @@ def main(args):
         save_strategy = "epoch",
         learning_rate=2e-5,
         weight_decay=0.01,
+        save_total_limit = 2,
         #output_dir = 'finetuned_model',
         push_to_hub=True, 
         push_to_hub_model_id = "finetuned_falcon40b")
