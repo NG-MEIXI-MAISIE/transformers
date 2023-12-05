@@ -169,7 +169,7 @@ def main(args):
 
 
     tokenizer = AutoTokenizer.from_pretrained("AMAISIENG/finetuned_falcon40b")
-    model = BioGptForCausalLM.from_pretrained("AMAISIENG/finetuned_falcon40b")
+    model = AutoModelForCausalLM.from_pretrained("AMAISIENG/finetuned_falcon40b")
     generator = pipeline('text-generation', model=model, tokenizer=tokenizer)
     set_seed(42)
     print(generator("COVID-19 is", max_length=20, num_return_sequences=5, do_sample=True))
@@ -179,6 +179,7 @@ def main(args):
     
 
     trainer.push_to_hub("End of training")
+    trainer.model.push_to_hub("my-finetuned_falcon40b")
     #trainer.model.push_to_hub("my-finetuned-biogpt")
 
 
