@@ -179,7 +179,7 @@ def main(args):
     
 
     trainer.push_to_hub("End of training")
-    trainer.model.push_to_hub("my-finetuned_falcon40b")
+    #trainer.model.push_to_hub("my-finetuned_falcon40b")
     #trainer.model.push_to_hub("my-finetuned-biogpt")
 
 
