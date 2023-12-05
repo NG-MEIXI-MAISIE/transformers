@@ -123,6 +123,7 @@ def main(args):
         evaluation_strategy = "epoch",
         #evaluation_strategy = "no",
         save_strategy = "epoch",
+        load_best_model_at_end=True,
         learning_rate=2e-5,
         weight_decay=0.01,
         save_total_limit = 2,
