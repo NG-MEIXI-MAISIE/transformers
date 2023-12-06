@@ -179,8 +179,9 @@ def main(args):
     print(eval_results)
 
 
-    tokenizer = BioGptTokenizer.from_pretrained("AMAISIENG/finetuned_sealion3b")
-    model = BioGptForCausalLM.from_pretrained("AMAISIENG/finetuned_sealion3b")
+
+    tokenizer = AutoTokenizer.from_pretrained("AMAISIENG/finetuned_sealion3b")
+    model = AutoModelForCausalLM.from_pretrained("AMAISIENG/finetuned_sealion3b")
     
     generator = pipeline('text-generation', model=model, tokenizer=tokenizer)
     set_seed(42)
