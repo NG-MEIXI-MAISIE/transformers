@@ -60,7 +60,7 @@ def main(args):
 
 
     tokenizer = AutoTokenizer.from_pretrained("aisingapore/sealion3b", trust_remote_code=True)
-    model = AutoModelForCausalLM.from_pretrained("aisingapore/sealion3b", trust_remote_code=True)
+    model = AutoModelForCausalLM.from_pretrained("aisingapore/sealion3b", trust_remote_code=True, resume_download=True)
 
 
 
