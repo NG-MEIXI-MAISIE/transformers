@@ -183,9 +183,9 @@ def main(args):
     tokenizer = AutoTokenizer.from_pretrained("AMAISIENG/finetuned_sealion3b")
     model = AutoModelForCausalLM.from_pretrained("AMAISIENG/finetuned_sealion3b")
     
-    generator = pipeline('text-generation', model=model, tokenizer=tokenizer)
+    #generator = pipeline('text-generation', model=model, tokenizer=tokenizer)
     set_seed(42)
-    print(generator("COVID-19 is", max_length=20, num_return_sequences=5, do_sample=True))
+    #print(generator("COVID-19 is", max_length=20, num_return_sequences=5, do_sample=True))
 
 
 
