@@ -213,7 +213,7 @@ if __name__ == '__main__':
 
     # https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#train-a-model-with-pytorch
     # parser.add_argument('--epochs', type=int, default=50)
-    # parser.add_argument('--batch-size', type=int, default=64)
+    parser.add_argument('--batch-size', type=int, default=30)
     # parser.add_argument('--learning-rate', type=float, default=0.05)
     # parser.add_argument('--use-cuda', type=bool, default=False)
 
