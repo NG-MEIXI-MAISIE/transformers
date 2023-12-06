@@ -211,6 +211,8 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
+    torch.cuda.empty_cache() 
+
     # https://sagemaker.readthedocs.io/en/stable/frameworks/pytorch/using_pytorch.html#train-a-model-with-pytorch
     # parser.add_argument('--epochs', type=int, default=50)
     parser.add_argument('--batch-size', type=int, default=30)
