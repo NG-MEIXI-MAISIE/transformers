@@ -65,11 +65,11 @@ def main(args):
 
 
     #generator = pipeline('text-generation', model=model, tokenizer=tokenizer)
-    pipe = pipeline("text-generation", model="aisingapore/sealion3b", trust_remote_code=True)
+    # pipe = pipeline("text-generation", model="aisingapore/sealion3b", trust_remote_code=True)
 
 
-    set_seed(42)
-    print(pipe("COVID-19 is", max_length=20, num_return_sequences=5, do_sample=True))
+    #set_seed(42)
+    # print(pipe("COVID-19 is", max_length=20, num_return_sequences=5, do_sample=True))
 
 
 
