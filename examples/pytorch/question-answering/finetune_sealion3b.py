@@ -12,6 +12,7 @@
 import argparse
 import json
 import os
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:512"
 import sacremoses
 import transformers
 import pandas as pd
