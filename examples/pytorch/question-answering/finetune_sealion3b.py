@@ -23,7 +23,8 @@ import transformers
 import pandas as pd
 import datasets
 
-import torch  
+import torch
+torch.cuda.empty_cache() 
 from transformers import pipeline, set_seed
 from datasets import Dataset, DatasetDict
 from transformers import DataCollatorForLanguageModeling
