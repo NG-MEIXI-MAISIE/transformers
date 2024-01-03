@@ -128,7 +128,7 @@ def main(args):
     # Train the model 
     #model_name = model.split("/")[-1]
     training_args = TrainingArguments(
-        "finetuned_model4",
+        "finetuned_model5",
         # f"{model_name}-finetuned-GUSTO",
         # output_dir="./BioGPT-finetuned-GUSTO",
         #output_dir = "./output",
@@ -139,7 +139,7 @@ def main(args):
         weight_decay=0.01,
         #output_dir = 'finetuned_model',
         push_to_hub=True, 
-        push_to_hub_model_id = "finetuned_model4")
+        push_to_hub_model_id = "finetuned_model5")
         #load_best_model_at_end=True)
     
 
@@ -159,7 +159,7 @@ def main(args):
 
 
     #repo_name = "my-finetuned-biogpt"
-    repo_name = "finetuned_model4"
+    repo_name = "finetuned_model5"
     model.push_to_hub(repo_name)
     tokenizer.push_to_hub(repo_name)
 
@@ -178,8 +178,8 @@ def main(args):
     print(eval_results)
 
 
-    tokenizer = BioGptTokenizer.from_pretrained("AMAISIENG/finetuned_model4")
-    model = BioGptForCausalLM.from_pretrained("AMAISIENG/finetuned_model4")
+    tokenizer = BioGptTokenizer.from_pretrained("AMAISIENG/finetuned_model5")
+    model = BioGptForCausalLM.from_pretrained("AMAISIENG/finetuned_model5")
     generator = pipeline('text-generation', model=model, tokenizer=tokenizer)
     set_seed(42)
     print(generator("COVID-19 is", max_length=20, num_return_sequences=5, do_sample=True))
